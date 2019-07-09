@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home-wrapper">
+    <body>
+      <van-cell-group title='引导项'>
+        <van-cell @click='handleClickCell' v-for='item in menuItems' :key="item.id" :title="item.title" is-link :to="item.viewName" />
+      </van-cell-group>
+    </body>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  computed: {
+    menuItems () {
+      return this.$store.getters.menuItems
+    }
+  },
+  methods: {
+    handleClickCell (e) {
+      this.$store.commit('setNavbarTitle', e.target.innerText || '指引')
+    }
   }
 }
 </script>
