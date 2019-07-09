@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/weiju2-guide/'
+  // publicPath: '/weiju2-guide/'
 }
